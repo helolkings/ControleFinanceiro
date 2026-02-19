@@ -1,0 +1,9 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-family: Tahoma;
+    background: #1d1b94;
+    background: radial-gradient(circle, rgba(29, 27, 148, 1) 0%, rgba(13, 130, 38, 1) 100%);
+
+}

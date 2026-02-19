@@ -1,0 +1,66 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-family: Tahoma;
+}
+
+main {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    background-color: #bcbcbc;
+    color: black;
+}
+
+footer {
+    background-color: #00004e;
+    color: white;
+    text-align: center;
+    padding: 16px 0px;
+    font-size: 12px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.box-form {
+    background-color: #272727;
+    color: white;
+    padding: 42px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px black;
+    margin: 120px;
+}
+
+.camp-form {
+    width: 280px;
+    height: 30px;
+    margin-bottom: 18px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 6px black;
+
+}
+
+.btn-acessar {
+    width: 100px;
+    height: 30px;
+    margin-bottom: 18px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background-color: #0f90ed;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px black;
+}
+
+.btn-acessar:hover {
+    background-color: #007b0e;
+}
