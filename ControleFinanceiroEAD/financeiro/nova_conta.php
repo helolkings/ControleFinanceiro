@@ -50,7 +50,7 @@ if (isset($_POST['btnSalvar'])) {
                     <label>Saldo:</label>
                     <input type="text" class="form-control" placeholder="Digite o Saldo aqui..." name="saldo" id="saldo">
                 </div>
-                <button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
+                <button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarConta()">Salvar</button>
             </form>
             </div>
             <!-- /. PAGE INNER  -->

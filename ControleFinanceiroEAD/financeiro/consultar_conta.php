@@ -62,7 +62,7 @@ if (isset($_POST['btnAlterar'])) {
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <form/>
+                                    </form>
                                 </div>
                             </div>
                         </div>

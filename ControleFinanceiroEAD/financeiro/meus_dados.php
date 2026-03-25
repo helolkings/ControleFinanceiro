@@ -53,7 +53,7 @@ if (isset($_POST['btnSalvar'])) {
 						</div>
 					</div>
 					<div style="text-align: center;">
-						<button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
+						<button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarCadastrarGravarDados()">Salvar</button>
 					</div>
 				</form>
 			</div>

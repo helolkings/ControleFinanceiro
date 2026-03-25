@@ -33,6 +33,6 @@ require_once 'DAO/UtilDAO.php';
         </div>
     </div>
 </body>
-<form/>
+</form>
 
 </html>

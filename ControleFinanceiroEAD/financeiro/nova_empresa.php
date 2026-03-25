@@ -48,8 +48,8 @@ if (isset($_POST['btnSalvar'])) {
                     <label>Endereço:</label>
                     <input type="text" class="form-control" placeholder="Digite o Endereço da Empresa aqui..."  name="endereco" id="endereco">
                 </div>
-                <button type="submit" class="btn btn-success"  name="btnSalvar">Salvar</button>
-                <form/>
+                <button type="submit" class="btn btn-success"  name="btnSalvar" onclick="return ValidarAlterarCadastrarEmpresa()">Salvar</button>
+                </form>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

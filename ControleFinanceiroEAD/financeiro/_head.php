@@ -19,4 +19,7 @@
     <script src="assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+    <!-- VALIDAÇÃO DE FORMULÁRIO JAVASCRIPT/JQUERY -->
+    <script src="assets/js/validar-campos.js"></script>
+</head>
 </head>

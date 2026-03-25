@@ -1,16 +1,14 @@
 <?php
 require_once 'DAO/ContaDAO.php';
 
-if (isset($_POST['btnExcluir']));
-else if (isset($_POST['btnSalvar'])) {
-	$banco = trim($_POST['banco']);
-	$agencia = trim($_POST['agencia']);
-	$numero = trim($_POST['numero']);
-	$saldo = trim($_POST['saldo']);
+if (isset($_POST['btnSalvar'])) {
+    $banco = trim($_POST['banco']);
+    $agencia = trim($_POST['agencia']);
+    $numero = trim($_POST['numero']);
+    $saldo = trim($_POST['saldo']);
 
-	$objDAO = new ContaDAO();
-	$ret = $objDAO->AlterarConta($banco, $agencia, $numero, $saldo);
-	$ret = $objDAO->ExcluirConta($banco, $agencia, $numero, $saldo); 
+    $objDAO = new ContaDAO();
+    $ret = $objDAO->AlterarConta($banco, $agencia, $numero, $saldo);
 }
 ?>
 
@@ -36,30 +34,30 @@ else if (isset($_POST['btnSalvar'])) {
                 <!-- /. ROW  -->
                 <hr>
                 <form role="form" action="alterar_conta.php" method="POST">
-                    <label>Nome do Banco:</label>
-                    <input type="text" class="form-control" name="banco" id="banco" placeholder="Digite o Nome do Banco aqui...">
+                    <div class="form-group">
+                        <label>Nome do Banco:</label>
+                        <input type="text" class="form-control" name="banco" id="banco" placeholder="Digite o Nome do Banco aqui..." value="<?= isset($banco) ? $banco : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Agência:</label>
+                        <input type="number" class="form-control" name="agencia" id="agencia" placeholder="Digite o Número da Agência aqui..." value="<?= isset($agencia) ? $agencia : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Conta:</label>
+                        <input type="number" class="form-control" name="numero" id="numero" placeholder="Digite o Número da Conta aqui..." value="<?= isset($numero) ? $numero : '' ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Saldo:</label>
+                        <input type="text" class="form-control" name="saldo" id="saldo" placeholder="Digite o Saldo da Conta aqui..." value="<?= isset($saldo) ? $saldo : '' ?>">
+                    </div>
+                    <button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarConta()">Salvar</button>
+                    <button type="submit" class="btn btn-danger" name="btnExcluir">Excluir</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label>Agência:</label>
-                <input type="number" class="form-control" name="agencia" id="agencia" placeholder="Digite o Número da Agência aqui...">
-            </div>
-            <div class="form-group">
-                <label>Conta:</label>
-                <input type="number" class="form-control" name="conta" id="conta" placeholder="Digite o Número da Conta aqui...">
-            </div>
-            <div class="form-group">
-                <label>Saldo:</label>
-                <input type="text" class="form-control" name="saldo" id="saldo" placeholder="Digite o Saldo da Conta aqui...">
-            </div>
-            <button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
-            <button type="submit" class="btn btn-danger" name="btnExcluir">Excluir</button>
-            </form>
+            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE INNER  -->
+        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. PAGE WRAPPER  -->
-    </div>
-
 
 </body>
 

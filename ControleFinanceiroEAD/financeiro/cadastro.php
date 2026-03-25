@@ -52,7 +52,7 @@ if (isset($_POST['btnCadastrar'])) {
 								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 								<input type="password" class="form-control" placeholder="Repita a Senha criada..." name="repsenha" id="repsenha" />
 							</div>
-							<button type="submit" class="btn btn-success" name="btnCadastrar">Cadastrar</button>
+							<button type="submit" class="btn btn-success" name="btnCadastrar" onclick="return ValidarCadastrarGravarDados()">Cadastrar</button>
 						</form>
 						<hr>
 						<span>Já possui Cadastro?</span>

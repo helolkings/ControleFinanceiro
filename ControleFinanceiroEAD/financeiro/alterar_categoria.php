@@ -1,13 +1,11 @@
 <?php
 require_once 'DAO/CategoriaDAO.php';
 
-if (isset($_POST['btnExcluir']));
-else if (isset($_POST['btnSalvar'])) {
+if (isset($_POST['btnSalvar'])){
 	$nomectg = trim($_POST['nomectg']);
 
 	$objDAO = new CategoriaDAO();
 	$ret = $objDAO->AlterarCategoria($nomectg);
-	$ret = $objDAO->ExcluirCategoria($nomectg); 
 }
 ?>
 
@@ -35,9 +33,9 @@ else if (isset($_POST['btnSalvar'])) {
                 <form role="form" action="alterar_categoria.php" method="POST">
                 <div class="form-group">
                     <label>Nome da Categoria:</label>
-                    <input type="text" class="form-control" name="nomectg" id="nomectg" placeholder="Digite o Nome da Categoria Financeira aqui...">
+                    <input type="text" class="form-control" name="nomectg" id="nomectg" placeholder="Digite o Nome da Categoria Financeira aqui..." value="<?= isset($nomectg) ? $nomectg: '' ?>">
                         </div>
-                    <button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
+                    <button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarCategoria()">Salvar</button>
                     <button type="submit" class="btn btn-danger" name="btnExcluir">Excluir</button>
                     </form>
                 </div>

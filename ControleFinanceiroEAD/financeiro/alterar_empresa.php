@@ -1,20 +1,17 @@
 <?php
 
-
 require_once 'DAO/EmpresaDAO.php';
 
-
-if (isset($_POST['btnSalvar']));
-else if (isset($_POST['btnExcluir'])) {
-    $empresa = trim($_POST['empresa']);
+if (isset($_POST['btnSalvar'])) {
+    $empresa  = trim($_POST['empresa']);
     $telefone = trim($_POST['telefone']);
     $endereco = trim($_POST['endereco']);
 
     $objDAO = new EmpresaDAO();
     $ret = $objDAO->AlterarEmpresa($empresa, $telefone, $endereco);
 }
-?>
 
+?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,16 +20,19 @@ else if (isset($_POST['btnExcluir'])) {
 
 <body>
     <div id="wrapper">
+
         <?php include_once '_topo.php'; ?>
         <?php include_once '_menu.php'; ?>
+
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
+
                 <div class="row">
                     <div class="col-md-12">
                         <h2>Alterar/Excluir uma Empresa</h2>
                         <h5>Aqui você poderá alterar ou excluir sua Empresa.</h5>
-                        <?php include_once '_msg.php'; ?>
+                         <?php include_once '_msg.php'; ?>
                     </div>
                 </div>
                 <!-- /. ROW  -->
@@ -41,18 +41,18 @@ else if (isset($_POST['btnExcluir'])) {
 
                 <div class="form-group">
                     <label>Nome da Empresa:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Nome da Empresa aqui..." name="empresa" id="empresa">
+                    <input type="text" class="form-control" placeholder="Digite o Nome da Empresa aqui..." name="empresa" id="empresa" value="<?= isset ($empresa) ? $empresa : '' ?>">
                 </div>
                 <div class="form-group">
                     <label>Telefone:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Telefone da Empresa aqui..." name="telefone" id="telefone">
+                    <input type="text" class="form-control" placeholder="Digite o Telefone da Empresa aqui..." name="telefone" id="telefone" value="<?= isset ($telefone) ? $telefone : '' ?>">
                 </div>
                 <div class="form-group">
                     <label>Endereço:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Endereço da Empresa aqui..." name="endereco" id="endereco">
+                    <input type="text" class="form-control" placeholder="Digite o Endereço da Empresa aqui..." name="endereco" id="endereco" value="<?= isset ($endereco) ? $endereco : '' ?>">
                 </div>
-                <button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
-                <button type="submit" class="btn btn-danger" name="btnExcluir">Excluir</button>
+                <button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarEmpresa()">Salvar</button>
+                <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
             </div>
             <!-- /. PAGE INNER  -->

@@ -31,9 +31,9 @@ if (isset($_POST['btnSalvar'])) {
 				<form role="form" action="nova_categoria.php" method="POST">
 					<div class="form-group">
 						<label>Nome da Categoria Financeira:</label>
-						<input type="text" class="form-control" placeholder="Digite o Nome da Categoria aqui..." name="nomectg" id="nomectg">
+						<input type="text" class="form-control" placeholder="Digite o Nome da Categoria Financeira aqui..." name="nomectg" id="nomectg">
 					</div>
-					<button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
+					<button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarCategoria()">Salvar</button>
 				</form>
 			</div>
 			<!-- /. PAGE INNER  -->

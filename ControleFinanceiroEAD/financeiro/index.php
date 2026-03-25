@@ -45,7 +45,7 @@ if (isset($_POST['btnAcessar'])) {
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                 <!-- name e id no imput -->
-                                <input type="email" class="form-control" placeholder="Digite Seu E-mail aqui..." name="email" id="emal" />
+                                <input type="email" class="form-control" placeholder="Digite Seu E-mail aqui..." name="email" id="email" />
                             </div>
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
@@ -53,7 +53,7 @@ if (isset($_POST['btnAcessar'])) {
                                 <input type="password" class="form-control" placeholder="Digite Sua Senha aqui..." name="senha" id="senha" />
                             </div>
                             <!-- name btn no button -->
-                            <button type="submit" class="btn btn-primary" name="btnAcessar">Acessar</button>
+                            <button type="submit" class="btn btn-primary" name="btnAcessar" onclick="return ValidarLogin()">Acessar</button>
                         </form>
                         <span>Caso não tenha cadastro,</span> <a href="cadastro.php">Clique Aqui!</a>
                     </div>

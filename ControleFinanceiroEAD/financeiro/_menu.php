@@ -30,7 +30,7 @@
                     </ul>
                 </li>
                 <li>
-                     <a href="#"><i class="fa fa-bank fa-2x"></i>Contas<span class="fa arrow"></span></a>
+                     <a href="#"><i class="fa fa-credit-card fa-2x"></i>Contas<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="nova_conta.php">Cadastrar Conta</a>
@@ -41,7 +41,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-line-chart fa-2x"></i>Movimentos<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-exchange fa-2x"></i>Movimentos<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="realizar_movimento.php">Realizar Movimento</a>

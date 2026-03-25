@@ -1,0 +1,112 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2026-03-11 19:41
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: casa
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `db_financeiro` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE IF NOT EXISTS `db_financeiro`.`tb_usuario` (
+  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome_usuario` VARCHAR(60) NOT NULL,
+  `email_usuario` VARCHAR(45) NOT NULL,
+  `senha_usuario` VARCHAR(8) NOT NULL,
+  `data_cadastro` DATE NOT NULL,
+  PRIMARY KEY (`id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `db_financeiro`.`tb_cateoria` (
+  `id_cateoria` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome_cateoria` VARCHAR(40) NOT NULL,
+  `id_usuario` INT(11) NOT NULL,
+  PRIMARY KEY (`id_cateoria`),
+  INDEX `fk_tb_cateoria_tb_usuario_idx` (`id_usuario` ASC),
+  CONSTRAINT `fk_tb_cateoria_tb_usuario`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `db_financeiro`.`tb_usuario` (`id_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `db_financeiro`.`tb_empresa` (
+  `id_empresa` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome_empresa` VARCHAR(45) NOT NULL,
+  `telefone_empresa` VARCHAR(14) NOT NULL,
+  `endereco_empresa` VARCHAR(50) NOT NULL,
+  `id_usuario` INT(11) NOT NULL,
+  PRIMARY KEY (`id_empresa`),
+  INDEX `fk_tb_empresa_tb_usuario1_idx` (`id_usuario` ASC),
+  CONSTRAINT `fk_tb_empresa_tb_usuario1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `db_financeiro`.`tb_usuario` (`id_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `db_financeiro`.`tb_conta` (
+  `id_conta` INT(11) NOT NULL AUTO_INCREMENT,
+  `banco_conta` VARCHAR(45) NOT NULL,
+  `agencia_conta` VARCHAR(45) NOT NULL,
+  `numero_conta` VARCHAR(45) NOT NULL,
+  `sado_conta` VARCHAR(45) NOT NULL,
+  `id_usuario` INT(11) NOT NULL,
+  PRIMARY KEY (`id_conta`),
+  INDEX `fk_tb_conta_tb_usuario1_idx` (`id_usuario` ASC),
+  CONSTRAINT `fk_tb_conta_tb_usuario1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `db_financeiro`.`tb_usuario` (`id_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `db_financeiro`.`tb_movimento` (
+  `id_movimento` INT(11) NOT NULL AUTO_INCREMENT,
+  `tipo_movimento` SMALLINT(1) NOT NULL,
+  `data_movimento` DATE NOT NULL,
+  `valor_movimento` DECIMAL NOT NULL,
+  `obs_movimento` VARCHAR(250) NULL DEFAULT NULL,
+  `id_cateoria` INT(11) NOT NULL,
+  `id_empresa` INT(11) NOT NULL,
+  `id_conta` INT(11) NOT NULL,
+  `id_usuario` INT(11) NOT NULL,
+  PRIMARY KEY (`id_movimento`),
+  INDEX `fk_tb_movimento_tb_cateoria1_idx` (`id_cateoria` ASC),
+  INDEX `fk_tb_movimento_tb_empresa1_idx` (`id_empresa` ASC),
+  INDEX `fk_tb_movimento_tb_conta1_idx` (`id_conta` ASC),
+  INDEX `fk_tb_movimento_tb_usuario1_idx` (`id_usuario` ASC),
+  CONSTRAINT `fk_tb_movimento_tb_cateoria1`
+    FOREIGN KEY (`id_cateoria`)
+    REFERENCES `db_financeiro`.`tb_cateoria` (`id_cateoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_movimento_tb_empresa1`
+    FOREIGN KEY (`id_empresa`)
+    REFERENCES `db_financeiro`.`tb_empresa` (`id_empresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_movimento_tb_conta1`
+    FOREIGN KEY (`id_conta`)
+    REFERENCES `db_financeiro`.`tb_conta` (`id_conta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_movimento_tb_usuario1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `db_financeiro`.`tb_usuario` (`id_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
