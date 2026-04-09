@@ -10,11 +10,17 @@ if (isset($_POST['btnSalvar'])) {
 	$objDAO = new UsuarioDAO();
 	$ret = $objDAO->GravarMeusDados($nome, $email, $senha, $repsenha);
 }
+
+$usuario =$objDAO->CarregarMeusDados();
+
+print_r($usuario);
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Chamada do Head e seus recursos! -->
 <?php include_once '_head.php'; ?>
+
 <body>
 	<div id="wrapper">
 		<?php
@@ -32,17 +38,17 @@ if (isset($_POST['btnSalvar'])) {
 				</div>
 				<hr>
 				<form role="form" action="meus_dados.php" method="POST">
-					<div class="col-md-6">
+					<!-- <div class="col-md-6"> -->
 						<div class="form-group">
 							<label>Nome:</label>
-							<input type="text" class="form-control" placeholder="Digite seu Nome aqui..." name="nome" id="nome">
+							<input type="text" class="form-control" value="<?= $dados[0]['nome_usuario']?>" placeholder="Digite seu Nome aqui..." name="nome" id="nome">
 						</div>
 						<div class="form-group">
 							<label>E-mail:</label>
-							<input type="email" class="form-control" placeholder="Digite seu E-mail aqui..." name="email" id="email">
+							<input type="email" class="form-control" value="<?= $dados[0]['email_usuario']?>" placeholder="Digite seu E-mail aqui..." name="email" id="email">
 						</div>
-					</div>
-					<div class="col-md-6">
+					<!-- </div> -->
+					<!-- <div class="col-md-6">
 						<div class="form-group">
 							<label>Senha:</label>
 							<input type="password" class="form-control" placeholder="Digite sua Senha aqui..." name="senha" id="senha">
@@ -51,7 +57,7 @@ if (isset($_POST['btnSalvar'])) {
 							<label>Repita sua Senha:</label>
 							<input type="password" class="form-control" placeholder="Repita sua Senha aqui..." name="repsenha" id="repsenha">
 						</div>
-					</div>
+					</div> -->
 					<div style="text-align: center;">
 						<button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarCadastrarGravarDados()">Salvar</button>
 					</div>
@@ -60,4 +66,5 @@ if (isset($_POST['btnSalvar'])) {
 		</div>
 	</div>
 </body>
+
 </html>

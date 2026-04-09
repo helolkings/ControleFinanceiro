@@ -1,10 +1,11 @@
 <?php
 
+require_once 'UtilDAO.php';
+require_once 'Conexao.php';
 
-require_once 'EmpresaDAO.php';
 
-
-class EmpresaDAO{
+class EmpresaDAO extends Conexao
+{
     public function CadastrarEmpresa($empresa, $telefone, $endereco){
         if($empresa == '' || $telefone == '' || $endereco == ''){
             return 0;

@@ -1,10 +1,12 @@
 <?php
 
 
-require_once 'UsuarioDAO.php';
+require_once 'UtilDAO.php';
+require_once 'Conexao.php';
 
 
-class UsuarioDAO
+class UsuarioDAO extends Conexao
+
 {
     public function ValidarLogin($email, $senha)
     {
@@ -32,8 +34,29 @@ class UsuarioDAO
     }
 
 
-    public function CarregarMeusDados() {}
+    public function CarregarMeusDados() 
+    {
+            //Inicio do codigo que frá o inset no BD
+            //1° passo: Criar uma variavel que guarda o obj de conexão
+            $conexao = $this->retornaConexao();
 
+            //2° passo: Comando SQL que será executado
+            $comando_sql = ' SELECT nome_usuario, email_usuario FROM tb_usuario where id_usuario = ?';
+
+            //3° passo: Criar o obj que levara as instruições para o BD
+            $sql = new PDOStatement();
+
+            //4° passo: Conecta tudo
+            $sql = $conexao->prepare($comando_sql);
+
+        
+            $sql->bindValue(1,  UtilDAO::UsuarioLogado());
+            $sql->setFetchMode(PDO::FETCH_ASSOC);
+            $sql->execute();
+    
+            return $sql->fetchAll();
+            }
+    
 
     public function GravarMeusDados($nome, $email, $senha, $repsenha)
     {

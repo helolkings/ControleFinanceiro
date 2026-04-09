@@ -1,12 +1,11 @@
 <?php
+
 require_once 'DAO/CategoriaDAO.php';
 
-if (isset($_POST['btnAlterar'])) {
-	
-
+// if (isset($_POST['btnAlterar'])) {
 	$objDAO = new CategoriaDAO();
-	$ret = $objDAO->ConsultarCategoria();
-}
+	$categorias = $objDAO->ConsultarCategoria();
+//}
 ?>
     
 <!DOCTYPE html>
@@ -44,12 +43,14 @@ if (isset($_POST['btnAlterar'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php for($i = 0; $i<count($categorias) ; $i++){ ?>
                                     <tr class="odd gradeX">
-                                        <td>[exemplo]</td>
+                                        <td><?= $categorias[$i]['nome_categoria'] ?></td>
                                         <td>
-                                            <a href="alterar_categoria.php" class="btn btn-warning btn-sm" nome="btnAlterar" >Alterar</a>
+                                            <a href="alterar_categoria.php?cod=<?=  $categorias[$i]['id_categoria'] ?>" class="btn btn-warning btn-sm" nome="btnAlterar" >Alterar</a>
                                         </td>
                                     </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                           </form>
