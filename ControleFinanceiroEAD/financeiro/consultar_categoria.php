@@ -1,5 +1,7 @@
 <?php
 
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/CategoriaDAO.php';
 
 // if (isset($_POST['btnAlterar'])) {

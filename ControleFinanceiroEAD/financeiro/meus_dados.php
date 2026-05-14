@@ -1,19 +1,25 @@
 <?php
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/UsuarioDAO.php';
+$objDAO = new UsuarioDAO();
+
 
 if (isset($_POST['btnSalvar'])) {
 	$nome = trim($_POST['nome']);
 	$email = trim($_POST['email']);
-	$senha = trim($_POST['senha']);
-	$repsenha = trim($_POST['repsenha']);
+	//$senha = trim($_POST['senha']);
+	//$repsenha = trim($_POST['repsenha']);
 
-	$objDAO = new UsuarioDAO();
-	$ret = $objDAO->GravarMeusDados($nome, $email, $senha, $repsenha);
+	
+	$ret = $objDAO->GravarMeusDados($nome, $email);
 }
 
-$usuario =$objDAO->CarregarMeusDados();
+$dados = $objDAO->CarregarMeusDados();
 
-print_r($usuario);
+// echo '<pre>';
+// print_r($dados);
+// echo '</pre>';
 
 ?>
 <!DOCTYPE html>

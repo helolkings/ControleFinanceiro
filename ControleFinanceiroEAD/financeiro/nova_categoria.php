@@ -1,4 +1,6 @@
 <?php
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/CategoriaDAO.php';
 
 if (isset($_POST['btnSalvar'])) {
@@ -31,7 +33,7 @@ if (isset($_POST['btnSalvar'])) {
 				<form role="form" action="nova_categoria.php" method="POST">
 					<div class="form-group">
 						<label>Nome da Categoria Financeira:</label>
-						<input type="text" class="form-control" placeholder="Digite o Nome da Categoria Financeira aqui..." name="nomectg" id="nomectg">
+						<input type="text" class="form-control" placeholder="Digite o Nome da Categoria Financeira aqui..." name="nomectg" id="nomectg" maxlength="40">
 					</div>
 					<button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarCategoria()">Salvar</button>
 				</form>

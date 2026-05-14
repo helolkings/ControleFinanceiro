@@ -1,4 +1,6 @@
 <?php
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/ContaDAO.php';
 
 if (isset($_POST['btnSalvar'])) {
@@ -36,19 +38,19 @@ if (isset($_POST['btnSalvar'])) {
                 <form role="form" action="nova_conta.php" method="POST">
                 <div class="form-group">
                     <label>Nome do Banco:</label>
-                   <input type="text" class="form-control" placeholder="Digite o Nome do Banco aqui..." name="banco" id="banco">
+                   <input type="text" class="form-control" placeholder="Digite o Nome do Banco aqui..." name="banco" id="banco" maxlength="45">
                 </div>
                 <div class="form-group">
                     <label>Agência:</label>
-                   <input type="number" class="form-control" placeholder="Digite o Número da Agência aqui..." name="agencia" id="agencia">
+                   <input type="number" class="form-control" placeholder="Digite o Número da Agência aqui..." name="agencia" id="agencia" maxlength="45">
                 </div>
                 <div class="form-group">
                     <label>Número da Conta:</label>
-                   <input type="number" class="form-control" placeholder="Digite o Número da Conta aqui..." name="numero" id="numero">
+                   <input type="number" class="form-control" placeholder="Digite o Número da Conta aqui..." name="numero" id="numero" maxlength="45">
                 </div>
                 <div class="form-group">
                     <label>Saldo:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Saldo aqui..." name="saldo" id="saldo">
+                    <input type="text" class="form-control" placeholder="Digite o Saldo aqui..." name="saldo" id="saldo" maxlength="45">
                 </div>
                 <button type="submit" class="btn btn-success" name="btnSalvar" onclick="return ValidarAlterarCadastrarConta()">Salvar</button>
             </form>

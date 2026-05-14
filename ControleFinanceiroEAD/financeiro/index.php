@@ -53,6 +53,7 @@ if (isset($_POST['btnAcessar'])) {
                                 <input type="password" class="form-control" placeholder="Digite Sua Senha aqui..." name="senha" id="senha" />
                             </div>
                             <!-- name btn no button -->
+                             
                             <button type="submit" class="btn btn-primary" name="btnAcessar" onclick="return ValidarLogin()">Acessar</button>
                         </form>
                         <span>Caso não tenha cadastro,</span> <a href="cadastro.php">Clique Aqui!</a>

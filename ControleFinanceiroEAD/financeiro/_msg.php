@@ -26,6 +26,24 @@ if (isset($ret)) {
         case -3:
             echo '<div class="alert alert-warning text-center">As senhas devem ser iguais!</div>';
             break;
+
+        case -4:
+            echo '<div class="alert alert-warning text-center">
+                     O registro não poderá ser excluido, pois já está em uso!
+                  </div>';
+            break;
+
+        case -5:
+            echo '<div class="alert alert-danger text-center">
+                     E-mail já cadastrado. Coloque outro E-mail!
+                  </div>';
+            break;
+
+        case -6:
+            echo '<div class="alert alert-danger text-center">
+                     Usuário não encontrado.
+                  </div>';
+            break;
            
     }
 }       

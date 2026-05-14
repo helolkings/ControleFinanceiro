@@ -1,7 +1,16 @@
 <?php
 
-
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/MovimentoDAO.php';
+require_once 'DAO/CategoriaDAO.php';
+require_once 'DAO/EmpresaDAO.php';
+require_once 'DAO/ContaDAO.php';
+
+$daocat = new CategoriaDAO();
+$daoemp = new EmpresaDAO();
+$daocon = new ContaDAO();
+
 
 
 if (isset($_POST['btnRealizarMovimento'])) {
@@ -16,6 +25,12 @@ if (isset($_POST['btnRealizarMovimento'])) {
     $objDAO = new MovimentoDAO();
     $ret = $objDAO->RealizarMovimento($tipo, $data, $valor, $categoria, $empresa, $conta, $obs);
 }
+
+$categorias = $daocat->ConsultarCategoria();
+$empresas = $daoemp->ConsultarEmpresa();
+$contas = $daocon->ConsultarConta();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,13 +71,15 @@ if (isset($_POST['btnRealizarMovimento'])) {
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Digite o Valor ($):</label>
-                            <input type="text" class="form-control" placeholder="Digite o Valor aqui..." name="valor" id="valor" value="<?= isset($valor) ? $valor : '' ?>">
+                            <input type="text" class="form-control" placeholder="Digite o Valor aqui..." name="valor" id="valor" maxlength="60" value="<?= isset($valor) ? $valor : '' ?>">
                         </div>
                         <div class="form-group">
                             <label>Selecione uma Categoria Financeira:</label>
                             <select class="form-control" name="categoria" id="categoria">
                                 <option value="" <?= !isset($categoria) || $categoria === '' ? 'selected' : '' ?>>Selecione</option>
-                                <option value="1" <?= isset($categoria) && $categoria == 1 ? 'selected' : '' ?>>Teste</option>
+                                <?php foreach ($categorias as $item) { ?>
+                                    <option value="<?= $item['id_categoria'] ?>"> <?= $item['nome_categoria'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -71,21 +88,26 @@ if (isset($_POST['btnRealizarMovimento'])) {
                             <label>Selecione uma Empresa:</label>
                             <select class="form-control" name="empresa" id="empresa">
                                 <option value="" <?= !isset($empresa) || $empresa === '' ? 'selected' : '' ?>>Selecione</option>
-                                <option value="1" <?= isset($empresa) && $empresa == 1 ? 'selected' : '' ?>>Teste</option>
+                                <?php foreach ($empresas as $item) { ?>
+                                    <option value="<?= $item['id_empresa'] ?>"> <?= $item['nome_empresa'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Selecione uma Conta Bancária:</label>
                             <select class="form-control" name="conta" id="conta">
                                 <option value="" <?= !isset($conta) || $conta === '' ? 'selected' : '' ?>>Selecione</option>
-                                <option value="1" <?= isset($conta) && $conta == 1 ? 'selected' : '' ?>>Teste</option>
+                                <?php foreach ($contas as $item) { ?>
+                                <option value="<?= $item['id_conta'] ?>"> 
+                                <?= 'Banco: ' . $item['banco_conta']  . ', ' . 'Agência: ' . $item['agencia_conta']  . ' / ' . 'Número: ' . $item['numero_conta']  ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Digite uma Observação (opicional):</label>
-                            <textarea class="form-control" rows="6" placeholder="Digite uma Obeservação aqui..." name="obs"><?= isset($obs) ? $obs : '' ?></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Digite uma Obeservação aqui..." maxlength="250" name="obs"><?= isset($obs) ? $obs : '' ?></textarea>
                         </div>
                         <div style="text-align: center;">
                             <button type="submit" class="btn btn-success" name="btnRealizarMovimento" onclick="return ValidarRealizarMovimento()">Realizar Movimento</button>

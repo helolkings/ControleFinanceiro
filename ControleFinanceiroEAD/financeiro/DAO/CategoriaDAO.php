@@ -46,7 +46,8 @@ class CategoriaDAO extends Conexao
     {
         $conexao = $this->retornaConexao();
 
-        $comando_sql = ' SELECT nome_categoria, id_categoria FROM tb_categoria WHERE id_usuario = ?';
+        $comando_sql = ' SELECT nome_categoria, id_categoria FROM tb_categoria WHERE id_usuario = ? 
+                         ORDER BY nome_categoria ASC';
 
         $sql = new PDOStatement();
 
@@ -58,6 +59,7 @@ class CategoriaDAO extends Conexao
 
         return $sql->fetchAll();
     }
+
 
     public function DetalharCategoria($id)
     {
@@ -86,9 +88,9 @@ class CategoriaDAO extends Conexao
         $conexao = $this->retornaConexao();
 
         $comando_sql = 'UPDATE tb_categoria
-                        SET nome_categoria =?
-                        WHERE id_categoria =?
-                        AND id_usuario =?';
+                        SET    nome_categoria =?
+                        WHERE  id_categoria =?
+                        AND    id_usuario =?';
 
         $sql = new PDOStatement();
 
@@ -108,12 +110,31 @@ class CategoriaDAO extends Conexao
             return -1;
         }
     }
-    public function ExcluirCategoria($nomeCat)
+
+
+    public function ExcluirCategoria($id)
     {
-        if ($nomeCat == '') {
+        if ($id == '') {
             return 0;
-        } else {
-            return 1;
         }
+
+        $conexao = $this->retornaConexao();
+
+        $comando_sql = 'DELETE FROM tb_categoria WHERE id_categoria = ? AND id_usuario = ?';
+
+        $sql = new PDOStatement();
+
+        $sql = $conexao->prepare($comando_sql);
+
+        $sql->bindValue(1, $id);
+        $sql->bindValue(2,  UtilDAO::UsuarioLogado());
+       
+        try{
+            $sql->execute();
+            return 1;
+        }catch(Exception $ex){
+            return -4;
+        }
+    
     }
 }

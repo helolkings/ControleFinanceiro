@@ -1,14 +1,16 @@
 <?php
 
-
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/EmpresaDAO.php';
 
 
-if (isset($_POST['btnAlterar'])) {
+//if (isset($_POST['btnAlterar'])) {
    
     $objDAO = new EmpresaDAO();
-    $ret = $objDAO->ConsultarEmpresa();
-}
+    $empresas = $objDAO->ConsultarEmpresa();
+    
+//}
 ?>
 
 
@@ -51,20 +53,19 @@ if (isset($_POST['btnAlterar'])) {
                                                 <th>Telefone</th>
                                                 <th>Endereço</th>
                                                 <th>Ação</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php for($i = 0; $i<count($empresas) ; $i++){ ?>
                                             <tr class="odd gradeX">
-                                                <td>[exemplo]</td>
-                                                <td>[exemplo]</td>
-                                                <td>[exemplo]</td>
+                                                <td><?= $empresas[$i]['nome_empresa'] ?></td>
+                                                <td><?= $empresas[$i]['telefone_empresa'] ?></td>
+                                                <td><?= $empresas[$i]['endereco_empresa'] ?></td>
                                                 <td>
-                                                    <a href="alterar_empresa.php" class="btn btn-warning btn-sm" name="btnAlterar">Alterar</a>
+                                                    <a href="alterar_empresa.php?cod=<?=  $empresas[$i]['id_empresa'] ?>" class="btn btn-warning btn-sm" name="btnAlterar">Alterar</a>
                                                 </td>
-
                                             </tr>
-
+                                             <?php } ?>
                                         </tbody>
                                     </table>
                                     </form>

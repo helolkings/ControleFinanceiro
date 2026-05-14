@@ -1,6 +1,7 @@
 <?php
 
-
+require_once 'DAO/UtilDAO.php';
+UtilDAO::VerificarLogado();
 require_once 'DAO/EmpresaDAO.php';
 
 
@@ -38,15 +39,15 @@ if (isset($_POST['btnSalvar'])) {
                 <form role="form" action="nova_empresa.php" method="POST">
                 <div class="form-group">
                     <label>Nome da Empresa:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Nome da Empresa aqui..."  name="empresa" id="empresa">
+                    <input type="text" class="form-control" placeholder="Digite o Nome da Empresa aqui..."  name="empresa" id="empresa" maxlength="45">
                 </div>
                 <div class="form-group">
                     <label>Telefone:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Telefone da Empresa aqui..."  name="telefone" id="telefone">
+                    <input type="text" class="form-control" placeholder="Digite o Telefone da Empresa aqui..."  name="telefone" id="telefone" maxlength="14">
                 </div>
                 <div class="form-group">
                     <label>Endereço:</label>
-                    <input type="text" class="form-control" placeholder="Digite o Endereço da Empresa aqui..."  name="endereco" id="endereco">
+                    <input type="text" class="form-control" placeholder="Digite o Endereço da Empresa aqui..."  name="endereco" id="endereco" maxlength="50">
                 </div>
                 <button type="submit" class="btn btn-success"  name="btnSalvar" onclick="return ValidarAlterarCadastrarEmpresa()">Salvar</button>
                 </form>
