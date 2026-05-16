@@ -3,4 +3,4 @@
 
 
 DELETE FROM tb_usuario
-WHERE id_categoria =
+WHERE id_categoria = 15;

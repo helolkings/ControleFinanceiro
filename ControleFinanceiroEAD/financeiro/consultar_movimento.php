@@ -84,7 +84,7 @@ if (isset($_POST['btnPesquisar'])) {
                         <button type="submit" class="btn btn-primary" name="btnPesquisar" onclick="return ValidarConsultarMovimento()">Pesquisar</button>
                     </div>
                     <hr>
-                    <?php if (isset($movs)) { ?>
+                    <?php if (isset($movs) && count($movs) > 0) { ?>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
@@ -170,7 +170,11 @@ if (isset($_POST['btnPesquisar'])) {
                             </div>
                         </div>
                         </div>
-                    <?php } ?>
+                    <?php } else if (isset($_POST['btnPesquisar'])) { ?>
+                            <div class="alert alert-info text-center col-md-12">
+                                Não existe nenhum movimento para ser exibido.
+                            </div>
+                        <?php } ?>
                  </div>
              </div>
          </div>

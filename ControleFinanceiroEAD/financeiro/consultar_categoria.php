@@ -30,6 +30,7 @@ require_once 'DAO/CategoriaDAO.php';
                     </div>
                 </div>
                 <hr>
+                <?php if (count($categorias) > 0) { ?>
                 <form role="form" action="consultar_categoria.php" method="POST">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -62,6 +63,11 @@ require_once 'DAO/CategoriaDAO.php';
                 <!--End Advanced Tables -->
             </div>
         </div>
+                <?php } else { ?>
+                    <div class="alert alert-info text-center col-md-12">
+                    Não existe nenhuma categoria cadastrada.
+                    </div>
+                <?php } ?>
     </div>
     <!-- /. PAGE INNER  -->
     </div>

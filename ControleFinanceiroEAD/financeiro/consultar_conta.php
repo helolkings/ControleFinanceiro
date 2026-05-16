@@ -35,7 +35,8 @@ $contas = $objDAO->ConsultarConta();
                 <!-- /. ROW  -->
                 <hr>
                 <form role="form" action="consultar_conta.php" method="POST">
-                    <div class="row">
+                    <?php if (count($contas) > 0) { ?>
+                <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
                             <div class="panel panel-default">
@@ -68,13 +69,18 @@ $contas = $objDAO->ConsultarConta();
                                                 <?php } ?>
                                             </tbody>
                                         </table>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--End Advanced Tables -->
-    </div>
-    </div>
+                                    </form>
+                                  </div>
+                               </div>
+                            </div>
+                        <!--End Advanced Tables -->
+                     </div>
+                  </div>
+                <?php } else { ?>
+                    <div class="alert alert-info text-center col-md-12">
+                    Não existe nenhuma conta cadastrada.
+                    </div>
+                <?php } ?>
     </div>
     <!-- /. PAGE INNER  -->
     </div>

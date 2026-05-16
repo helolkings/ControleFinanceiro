@@ -37,6 +37,7 @@ require_once 'DAO/EmpresaDAO.php';
                 <!-- /. ROW  -->
                 <hr>
                 <form role="form" action="consultar_empresa.php" method="POST">
+                <?php if (count($empresas) > 0) { ?>
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Advanced Tables -->
@@ -70,12 +71,17 @@ require_once 'DAO/EmpresaDAO.php';
                                     </table>
                                     </form>
                                 </div>
-
+                        
                             </div>
                         </div>
                         <!--End Advanced Tables -->
                     </div>
                 </div>
+                <?php } else { ?>
+                    <div class="alert alert-info text-center col-md-12">
+                    Não existe nenhuma empresa cadastrada.
+                    </div>
+                <?php } ?>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

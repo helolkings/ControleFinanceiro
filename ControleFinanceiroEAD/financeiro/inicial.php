@@ -103,7 +103,7 @@ $movs = $objDAO->UltimosMovimentos();
                     </div>
                     </div>
                     <hr>
-                    <?php if (count($movs) > 0) { ?>
+                    <?php if (count($movs) > 0) { ?> 
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="panel panel-default">
