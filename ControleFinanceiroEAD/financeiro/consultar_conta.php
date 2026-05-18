@@ -61,7 +61,7 @@ $contas = $objDAO->ConsultarConta();
                                                         <td><?= $contas[$i]['banco_conta'] ?></td>
                                                         <td><?= $contas[$i]['agencia_conta'] ?></td>
                                                         <td><?= $contas[$i]['numero_conta'] ?></td>
-                                                        <td>R$ <?= $contas[$i]['saldo_conta'] ?></td>
+                                                        <td>R$ <?= number_format($contas[$i]['saldo_conta'], 2, ',', '.') ?></td>
                                                         <td>
                                                             <a href="alterar_conta.php?cod=<?= $contas[$i]['id_conta'] ?>" class="btn btn-warning btn-sm" name="btnAlterar">Alterar</a>
                                                         </td>
